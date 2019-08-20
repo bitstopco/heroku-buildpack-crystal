@@ -4,7 +4,7 @@ You can create an app in Heroku with Crystal's buildpack by running the
 following command:
 
 ```bash
-$ heroku create myapp --buildpack https://github.com/crystal-lang/heroku-buildpack-crystal.git
+$ heroku create myapp --buildpack https://github.com/bitstopco/heroku-buildpack-crystal.git
 ```
 
 The default behaviour is to use the [latest crystal release](https://github.com/crystal-lang/crystal/releases/latest).
@@ -13,8 +13,11 @@ application root directory with the version that should be used (e.g. `0.17.1`).
 
 ## Requirements
 
-In order for the buildpack to work properly you should have a `shard.yml` file,
-as it is how it will detect that your app is a Crystal app.
+In order for the buildpack to work properly you need to have a `shard.yml` file
+and `targets:` defined, as it is how it will detect that your app is a Crystal app
+and which binaries to build.
+
+A `Procfile` must also be present in order to execute the binaries.
 
 Your application has to listen on a port defined by Heroku. It is given to you
 through the command line option `--port` and the environment variable `PORT`
